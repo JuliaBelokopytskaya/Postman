@@ -1,5 +1,5 @@
 # Postman
-HW_1
+##HW_1
 
 Создать запросы в Postman.
 
@@ -137,7 +137,7 @@ response:
                      'u_salary_5_years': salary * 4.2}
           }
 
-HW_2 Postman
+##HW_2 Postman
 
 http://162.55.220.72:5005/first
 1. Отправить запрос.
