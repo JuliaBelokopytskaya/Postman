@@ -16,7 +16,7 @@
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"pm.test(\"Body matches string\", function () {\r",
-							"    pm.expect(pm.response.text()).to.include(\"This is the first responce from server!\");\r",
+							"    pm.response.to.have.body(\"This is the first responce from server!\");\r",
 							"});"
 						],
 						"type": "text/javascript"
