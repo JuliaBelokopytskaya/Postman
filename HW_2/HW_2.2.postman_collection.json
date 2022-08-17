@@ -1,0 +1,1450 @@
+{
+	"info": {
+		"_postman_id": "477ab171-ff8e-44d8-bb6d-62e34f33a82a",
+		"name": "HW_2.2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "user_info_2_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Julia",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "19",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "2000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/user_info_2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user_info_2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "object_info_4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let jsonData = pm.response.json();\r",
+							"let salary_user = jsonData.salary;\r",
+							"let req = pm.request.url.query.toObject();\r",
+							"let req_salary = req.salary;\r",
+							"let i=0;\r",
+							"while(i<salary_user.length){ \r",
+							"    postman.setNextRequest(\"object_info_4\")\r",
+							"    pm.test(`Test  salary[${i}]`, function () {   \r",
+							"        pm.expect(String(salary_user[i])).to.eql(String(req_salary*(i+1)));   \r",
+							"\r",
+							"    });\r",
+							"    i++;\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/object_info_4?name=Julia&age=28&salary=1200",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"object_info_4"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Julia"
+						},
+						{
+							"key": "age",
+							"value": "28"
+						},
+						{
+							"key": "salary",
+							"value": "1200"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "object_info_3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let jsonData = pm.response.json();\r",
+							"let req = pm.request.url.query.toObject();\r",
+							"\r",
+							"pm.test(\"Test equal value in keys name, age, salary\", function () {\r",
+							"    Object.keys({...jsonData, ...req}).every(key => key in [\"name\",\"age\",\"salary\"] && pm.expect(jsonData[key]).to.eql(req[key]));\r",
+							"});\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{url}}/object_info_3?name={{name}}&age={{age}}&salary={{salary}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"object_info_3"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "{{name}}"
+						},
+						{
+							"key": "age",
+							"value": "{{age}}"
+						},
+						{
+							"key": "salary",
+							"value": "{{salary}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_info_2_2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Pit",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "19",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "2000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/user_info_2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user_info_2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_info_2_3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "JuliaJuliaJuliaJuliaJuliaJuliaJuliaJulia",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "19",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "2000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/user_info_2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user_info_2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_info_2_4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "I",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "19",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "2000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/user_info_2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user_info_2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_info_2_5",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "JuliaJuliaJuliaJuliaJuliaJuliaJuliaJuliaJulia",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "19",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "2000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/user_info_2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user_info_2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_info_2_6",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": " Julia",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "19",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "2000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/user_info_2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user_info_2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_info_2_7",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Julia ",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "19",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "2000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/user_info_2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user_info_2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_info_2_8",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "19",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "2000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/user_info_2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user_info_2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_info_2_9",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Julia",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "18",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "2000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/user_info_2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user_info_2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_info_2_10",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Julia",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "120",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "2000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/user_info_2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user_info_2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_info_2_11",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Julia",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "15",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "2000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/user_info_2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user_info_2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_info_2_12",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Julia",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "150",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "2000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/user_info_2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user_info_2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_info_2_13",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Julia",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "20.5",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "2000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/user_info_2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user_info_2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_info_2_14",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Julia",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "2000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/user_info_2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user_info_2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_info_2_15",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Julia",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "19",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/user_info_2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user_info_2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_info_2_16",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Julia",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "19",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "1000000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/user_info_2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user_info_2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_info_2_17",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Julia",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "19",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "0",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/user_info_2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user_info_2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_info_2_18",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Julia",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "19",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "1000003",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/user_info_2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user_info_2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_info_2_19",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Julia",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "19",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "34.5",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/user_info_2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user_info_2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_info_2_20",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Julia",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "19",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/user_info_2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user_info_2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_info_2_21",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/user_info_2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user_info_2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_info_2_star",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let req = request.data;\r",
+							"function name_validate(req){\r",
+							"        if (req.name.length>=3 && req.name.length<=40 && req.name.substr(0,1) != \" \" && req.name.slice(-1) != \" \")\r",
+							"                return true;\r",
+							"    return false;\r",
+							"}\r",
+							"function age_validate(req){\r",
+							"        if (Number.isInteger(+req.age)){\r",
+							"            if (+req.age>=18 && +req.age<=120)\r",
+							"                return true;\r",
+							"            \r",
+							"        }\r",
+							"    return false;\r",
+							"}\r",
+							"function salary_validate(req){\r",
+							"        if (Number.isInteger(+req.salary)){\r",
+							"            if (+req.salary>=1 && +req.salary<=1000000)\r",
+							"                return true;\r",
+							"            \r",
+							"        }\r",
+							"    return false;\r",
+							"}\r",
+							"if (name_validate(req) && age_validate(req) && salary_validate(req)){\r",
+							"    pm.test(`Status code is 200 with name=${req.name}, age=${req.age}, salary = ${req.salary}` , function () {\r",
+							"        pm.response.to.have.status(200);\r",
+							"    });\r",
+							"}\r",
+							"else\r",
+							"    pm.test(`Status code is not 200 with name=${req.name}, age=${req.age}, salary = ${req.salary}` , function () {\r",
+							"        pm.response.not.to.have.status(200);\r",
+							"    });"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "{{name}}",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "{{age}}",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "{{salary}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/user_info_2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user_info_2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_info_2.4_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let jsonData = pm.response.json();\r",
+							"for(let i in jsonData){\r",
+							" if (i != \"person\"){ \r",
+							"    postman.setNextRequest(\"user_info_2.4_1\")\r",
+							"    pm.test(`Test property ${i}`, () => {\r",
+							"        pm.expect(jsonData).to.have.property(i);\r",
+							"    });\r",
+							"}\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "{{name}}",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "{{age}}",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "{{salary}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/user_info_2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user_info_2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_info_2.4_2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let jsonData = pm.response.json();\r",
+							"let req = request.data;\r",
+							"let salary_tax = {\"start_qa_salary\":1, \"qa_salary_after_6_months\":2, \"qa_salary_after_12_months\":2.7, \"qa_salary_after_1.5_year\":3.3, \"qa_salary_after_3.5_years\":3.8};\r",
+							"for(let i in jsonData){\r",
+							" if (i != \"person\"){ \r",
+							"    postman.setNextRequest(\"user_info_2.4_2\")\r",
+							"    pm.test(`Test request ${i}`, () => {\r",
+							"        pm.expect(String(jsonData[i])).to.eql(String(req.salary*salary_tax[i]));\r",
+							"    });\r",
+							"}\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "{{name}}",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "{{age}}",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "{{salary}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/user_info_2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user_info_2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_info_2.4_3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let jsonData = pm.response.json();\r",
+							"let salary_tax = {\"start_qa_salary\":1, \"qa_salary_after_6_months\":2, \"qa_salary_after_12_months\":2.7, \"qa_salary_after_1.5_year\":3.3, \"qa_salary_after_3.5_years\":3.8};\r",
+							"let req = request.data;\r",
+							"\r",
+							"for(let i in jsonData){\r",
+							" if (i != \"person\"){ \r",
+							"    postman.setNextRequest(\"user_info_2.4_3\")\r",
+							"    pm.test(`Test property ${i}`, () => {\r",
+							"        pm.expect(jsonData).to.have.property(i);\r",
+							"    });\r",
+							"    pm.test(`Test request ${i}`, () => {\r",
+							"        pm.expect(String(jsonData[i])).to.eql(String(req.salary*salary_tax[i]));\r",
+							"    });   \r",
+							"\r",
+							"}\r",
+							"}\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "{{name}}",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "{{age}}",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "{{salary}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/user_info_2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user_info_2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
